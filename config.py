@@ -37,7 +37,7 @@ class Settings:
 
     # App
     APP_HOST: str = os.getenv("APP_HOST", "0.0.0.0")
-    APP_PORT: int = int(os.getenv("APP_PORT", "8001"))
+    APP_PORT: int = int(os.getenv("PORT", os.getenv("APP_PORT", "8001")))
     DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
 
     def __init__(self):
