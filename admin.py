@@ -17,7 +17,7 @@ from fastapi import APIRouter, HTTPException
 from services.database import clear_chat_histories, fetch_order_by_id
 
 logger = logging.getLogger(__name__)
-router = APIRouter(prefix="/admin", tags=["Admin"])
+router = APIRouter()
 
 
 # ── Endpoints ──────────────────────────────────────────────────────────────

@@ -21,7 +21,7 @@ from services import audio as audio_svc
 from services.agent import run_open_agent, run_closed_agent
 
 logger = logging.getLogger(__name__)
-router = APIRouter(prefix="/webhook", tags=["Webhook"])
+router = APIRouter()
 
 # Kill-switch phrase — mirrors n8n Switch condition for "paceagentoff"
 KILL_SWITCH = "paceagentoff"
