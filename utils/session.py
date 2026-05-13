@@ -128,7 +128,10 @@ def parse_webhook(raw: dict, session_mgr: SessionManager) -> Optional[ProcessedM
     Returns None if the message should be dropped.
     Mirrors n8n Deduplicate & Filter code node for Pace.
     """
-    data         = raw.get("body", {}).get("data", {}) or {}
+    # Evolution API can send payload at root or inside 'body'
+    data = raw.get("data", {})
+    if not data:
+        data = raw.get("body", {}).get("data", {}) or {}
     key_data     = data.get("key", {})
     msg_data     = data.get("message", {}) or {}
     raw_type     = data.get("messageType", "")
