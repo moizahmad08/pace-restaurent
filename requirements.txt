@@ -1,0 +1,13 @@
+# Pace Restaurant — AI Order Bot
+# Python 3.12+
+
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+httpx>=0.27.0
+openai>=1.40.0
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
+aiofiles>=24.1.0
+apscheduler>=3.10.4   # for 3 scheduled history clears (11 AM, 11 PM, midnight)

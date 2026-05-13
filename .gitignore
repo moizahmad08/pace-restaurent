@@ -1,0 +1,25 @@
+# Environment variables
+.env
+env/
+venv/
+.venv/
+env.example # Keep env.example out? Actually, env.example is good to keep. Wait, I won't ignore env.example
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Misc
+ngrok.exe
+ngrok.zip
+Pace.json
+package-lock.json
+
+# Local history
+.claude-launcher/
