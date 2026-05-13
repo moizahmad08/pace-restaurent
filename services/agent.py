@@ -119,36 +119,7 @@ TOOLS_OPEN = [
             },
         },
     },
-    {
-        "type": "function",
-        "function": {
-            "name": "save_order_pending",
-            "description": (
-                "Save order to Pace database with Status='Pending Confirmation'. "
-                "Call BEFORE showing the order summary (Step 7). "
-                "This is the FIRST of two DB saves."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "order_id":             {"type": "string"},
-                    "guest_name":           {"type": "string"},
-                    "phone":                {"type": "string"},
-                    "order_type":           {"type": "string", "enum": ["Delivery", "Takeaway"]},
-                    "delivery":             {"type": "string"},
-                    "dine_pickup_time":     {"type": "string"},
-                    "items":                {"type": "string"},
-                    "special_instructions": {"type": "string"},
-                    "subtotal":             {"type": "number"},
-                    "delivery_charges":     {"type": "string"},
-                    "total_amount":         {"type": "number"},
-                    "order_date":           {"type": "string"},
-                    "order_time":           {"type": "string"},
-                },
-                "required": ["order_id", "guest_name", "phone", "order_type", "subtotal", "total_amount"],
-            },
-        },
-    },
+
     {
         "type": "function",
         "function": {
@@ -246,26 +217,7 @@ async def _execute_tool(name: str, args: dict, customer_jid: str) -> str:
         result = calculate_bill(args.get("items", []))
         return result["billing_text"]
 
-    elif name == "save_order_pending":
-        now = datetime.now(PAKISTAN)
-        payload = {
-            "order_id":             args.get("order_id", ""),
-            "guest_name":           args.get("guest_name", ""),
-            "phone":                args.get("phone", ""),
-            "order_type":           args.get("order_type", "Delivery"),
-            "delivery":             args.get("delivery", "Takeaway"),
-            "dine_pickup_time":     args.get("dine_pickup_time", "N/A"),
-            "items":                args.get("items", ""),
-            "special_instructions": args.get("special_instructions", "None"),
-            "subtotal":             args.get("subtotal", 0),
-            "delivery_charges":     args.get("delivery_charges", "N/A"),
-            "total_amount":         args.get("total_amount", 0),
-            "status":               "Pending Confirmation",
-            "order_date":           args.get("order_date", now.strftime("%Y-%m-%d")),
-            "order_time":           args.get("order_time", now.strftime("%I:%M %p")),
-        }
-        await database.upsert_order(payload)
-        return "Order saved as Pending Confirmation."
+
 
     elif name == "confirm_order":
         try:
@@ -465,8 +417,8 @@ STEP 6: Ask delivery address (verify DI Khan) or pickup time.
   - Outside DI Khan → apologize, offer takeaway
   - Below Rs. 300 for delivery → inform shortfall
 
-STEP 7: Calculate (call calculate_bill), save as Pending (call save_order_pending),
-  then show ORDER SUMMARY. Ask: "Shall I confirm this order? ✅"
+STEP 7: Calculate (call calculate_bill), then show ORDER SUMMARY. 
+  Ask: "Shall I confirm this order? ✅"
 
 STEP 8 (after YES):
   1. Call confirm_order → updates DB to Confirmed + notifies admin/kitchen
