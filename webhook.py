@@ -35,6 +35,7 @@ async def chat_webhook(request: Request, background_tasks: BackgroundTasks):
     """
     try:
         raw = await request.json()
+        logger.info(f"Incoming webhook: {raw}")
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid JSON")
 
