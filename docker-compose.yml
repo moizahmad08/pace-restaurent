@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  pace-bot:
+    build: .
+    container_name: pace-restaurant-bot
+    ports:
+      - "8001:8001"
+    restart: always
+    environment:
+      - PORT=8001
+      # The platform's dashboard will inject the rest of your secret environment variables (OPENAI_API_KEY, etc.)
