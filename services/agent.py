@@ -134,7 +134,7 @@ TOOLS_OPEN = [
                     "order_id":             {"type": "string"},
                     "guest_name":           {"type": "string"},
                     "phone":                {"type": "string"},
-                    "order_type":           {"type": "string", "enum": ["Delivery", "Takeaway"]},
+                    "order_type":           {"type": "string", "enum": ["Delivery", "Takeaway", "Dine-in"]},
                     "delivery":             {"type": "string"},
                     "dine_pickup_time":     {"type": "string"},
                     "items":                {"type": "string"},
@@ -162,7 +162,7 @@ TOOLS_OPEN = [
                 "type": "object",
                 "properties": {
                     "order_json":  {"type": "string", "description": "Full order as JSON string"},
-                    "order_type":  {"type": "string", "enum": ["Delivery", "Takeaway"]},
+                    "order_type":  {"type": "string", "enum": ["Delivery", "Takeaway", "Dine-in"]},
                     "has_mutton":  {"type": "boolean"},
                 },
                 "required": ["order_json", "order_type"],
@@ -475,9 +475,9 @@ STEP 8 (after YES):
 CONFIRMATION TRIGGER WORDS:
   Yes, Confirm, OK, Okay, Done, Haan, Ji, Thik hai, Bilkul, Kar do, Bhejo, Ji haan
 
-PAYMENT: Cash only (Cash on Delivery / Cash on Pickup). No bank transfer.
+DINE-IN: Available. We offer Ground floor, Roof top, Family lounge, Family hall, Traditional seating, and Chair table seating.
+PAYMENT: Cash only. No bank transfer.
 DELIVERY MINIMUM: Rs. 300
-DINE-IN: Not available. Redirect to delivery/takeaway.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 LANGUAGE & TONE
@@ -536,7 +536,8 @@ RESTAURANT INFO:
   Est:       2004 (over 20 years!)
   Specialty: Sobat & Desi Food
   Hours:     11:00 AM – 11:30 PM daily
-  Services:  Delivery & Takeaway ONLY (no dine-in)
+  Services:  Delivery, Takeaway, and Dine-in
+  Dine-in:   Ground floor, Roof top, Family lounge, Family hall, Traditional seating, and Chair table seating.
   Min Order: Rs. 300 for delivery
   Payment:   Cash only
 
