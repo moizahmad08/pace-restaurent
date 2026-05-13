@@ -134,7 +134,7 @@ TOOLS_OPEN = [
                     "order_id":             {"type": "string"},
                     "guest_name":           {"type": "string"},
                     "phone":                {"type": "string"},
-                    "order_type":           {"type": "string", "enum": ["Delivery", "Takeaway", "Dine-in"]},
+                    "order_type":           {"type": "string", "enum": ["Delivery", "Takeaway"]},
                     "delivery":             {"type": "string"},
                     "dine_pickup_time":     {"type": "string"},
                     "items":                {"type": "string"},
@@ -162,7 +162,7 @@ TOOLS_OPEN = [
                 "type": "object",
                 "properties": {
                     "order_json":  {"type": "string", "description": "Full order as JSON string"},
-                    "order_type":  {"type": "string", "enum": ["Delivery", "Takeaway", "Dine-in"]},
+                    "order_type":  {"type": "string", "enum": ["Delivery", "Takeaway"]},
                     "has_mutton":  {"type": "boolean"},
                 },
                 "required": ["order_json", "order_type"],
@@ -475,7 +475,7 @@ STEP 8 (after YES):
 CONFIRMATION TRIGGER WORDS:
   Yes, Confirm, OK, Okay, Done, Haan, Ji, Thik hai, Bilkul, Kar do, Bhejo, Ji haan
 
-DINE-IN: Available. We offer Ground floor, Roof top, Family lounge, Family hall, Traditional seating, and Chair table seating.
+DINE-IN: We offer Ground floor, Roof top, Family lounge, Family hall, Traditional seating, and Chair table seating at the restaurant! However, I only take orders for **Delivery and Takeaway** here. 
 PAYMENT: Cash only. No bank transfer.
 DELIVERY MINIMUM: Rs. 300
 
@@ -536,8 +536,8 @@ RESTAURANT INFO:
   Est:       2004 (over 20 years!)
   Specialty: Sobat & Desi Food
   Hours:     11:00 AM – 11:30 PM daily
-  Services:  Delivery, Takeaway, and Dine-in
-  Dine-in:   Ground floor, Roof top, Family lounge, Family hall, Traditional seating, and Chair table seating.
+  Services:  Delivery & Takeaway only (via bot).
+  Dine-in:   We offer Ground floor, Roof top, Family lounge, Family hall, Traditional seating, and Chair table seating at the restaurant! (No orders via bot).
   Min Order: Rs. 300 for delivery
   Payment:   Cash only
 
